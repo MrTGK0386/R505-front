@@ -1,3 +1,5 @@
+import {Type} from "./type";
+
 export interface PokemonVariety {
   base_experience?: number;
   base_stat_attack: number;
@@ -26,6 +28,7 @@ export interface PokemonVariety {
     front_shiny_url?: string;
     front_url?: string;
   },
+  types?: Type[];
   updated_at: string;
   weight: number;
 }

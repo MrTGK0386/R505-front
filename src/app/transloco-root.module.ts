@@ -15,7 +15,7 @@ import { environment } from '../environments/environment';
           defaultLang: 'ja-hrkt',
           // Remove this option if your application doesn't support changing language in runtime.
           reRenderOnLangChange: true,
-          prodMode: environment.production,
+          // prodMode: environment.production,
         },
         loader: TranslocoHttpLoader
       }),

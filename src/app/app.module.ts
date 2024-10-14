@@ -9,6 +9,8 @@ import { PokemonCardComponent } from './shared/layouts/pokemon-card/pokemon-card
 import { PokemonDetailComponent } from './pages/pokemon-detail/pokemon-detail.component';
 import { TranslocoRootModule } from './transloco-root.module';
 import { LangSelectorComponent } from './shared/layouts/lang-selector/lang-selector.component';
+import {formatDate} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { LangSelectorComponent } from './shared/layouts/lang-selector/lang-selec
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    TranslocoRootModule
+    TranslocoRootModule,
+    FormsModule,
   ],
   providers: [
     provideHttpClient(),

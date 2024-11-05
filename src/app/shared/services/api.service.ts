@@ -1,17 +1,70 @@
 import { Injectable } from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
+import {Subject} from "rxjs";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
+import {Router} from "@angular/router";
+import {User} from "../interfaces/user"
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
+  private _token?: string;
+  isInit: boolean = false;
+  initEvent: Subject<boolean> = new Subject<boolean>();
+
+  get token(): string | undefined {
+    return this._token;
+  }
+  private set token(value: string | undefined) {
+    this._token = value;
+  }
+
+  private _user?: User;
+  get user(): User | undefined {
+    return this._user;
+  }
+  private set user(value: User | undefined) {
+    this._user = value;
+  }
+
   constructor(
     private http: HttpClient,
-  ) { }
+    private router: Router,
+  ) {
+    this.init();
+  }
+
+  public async init(){
+    // Récupère le code dans l'url
+    let urlParams = new URLSearchParams(window.location.search);
+
+    // S'il y a un code dans l'url, on effectue une requête pour récupérer le token
+    if(urlParams.has('code')){
+      let code = urlParams.get('code') as string;
+
+      // Effectue la requête sur le callback de l'API
+      let res = await this.requestApi('/auth/callback', 'GET', {code});
+      if(res && res.token){
+        this.savTokens(res.token);
+        await this.getUser();
+        this.router.navigate(['/']);
+      }
+    }else{
+      // Sinon on récupère le token dans le localstorage s'il existe et on le stocke dans la variable token
+      this.token = localStorage.getItem('apiToken') ? JSON.parse(localStorage.getItem('apiToken') as string).token : undefined;
+      if(this.token){
+        await this.getUser();
+      }
+    }
+
+    // On indique que l'initialisation est terminée
+    this.isInit = true;
+    this.initEvent.next(true);
+  }
 
   public async requestApi(action: string, method: string = 'GET', datas: any = {}, form?: FormGroup, httpOptions: any = {}): Promise<any> {
 
@@ -112,6 +165,27 @@ export class ApiService {
         }
       })
     });
+  }
+
+  savTokens(apiToken: string){
+
+    // Enregistre le token dans le localstorage
+    localStorage.setItem('apiToken', JSON.stringify({
+      token: apiToken,
+    }));
+
+    this.token = apiToken;
+
+  }
+
+  async getUser() {
+    await this.requestApi('/user').then((data: User) => {
+      this.user = data;
+    });
+  }
+
+  isLogged(): boolean{
+    return this.token !== undefined;
   }
 
   //fonction pour ajouter les paramètres à une url

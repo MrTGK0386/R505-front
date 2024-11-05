@@ -11,6 +11,8 @@ import { TranslocoRootModule } from './transloco-root.module';
 import { LangSelectorComponent } from './shared/layouts/lang-selector/lang-selector.component';
 import {formatDate} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {FormsModule} from "@angular/forms";
     PokemonListComponent,
     PokemonCardComponent,
     PokemonDetailComponent,
-    LangSelectorComponent
+    LangSelectorComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Pokemon} from "../../interfaces/pokemon";
+import { Type } from "../../interfaces/type";
+
 
 @Component({
   selector: 'app-pokemon-card',
@@ -22,6 +24,13 @@ export class PokemonCardComponent implements OnChanges {
       return this.pokemon.default_variety.types[index];
     }
     return null;
+  }
+
+  reorderTypes(array :Type[] | undefined): Type[] | undefined {
+    if (array){
+      return array.slice().reverse();
+    }
+    return;
   }
 }
 

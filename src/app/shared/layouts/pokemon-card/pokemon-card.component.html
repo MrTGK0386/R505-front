@@ -1,18 +1,18 @@
-<div class="card clickable flex flex-row justify-between gap-3">
+<div class="card clickable flex flex-row justify-between">
   <div>
     <p class="font-bold italic">N°{{ pokemon.id }}</p>
     <p class="text-2xl font-semibold">{{ pokemon.name }}</p>
     <div class="flex flex-row">
-      <ng-container *ngFor="let type of pokemon.default_variety?.types">
+      <ng-container *ngFor="let type of reorderTypes(pokemon.default_variety?.types)">
       <img [src]="type.icon" [alt]="type.id" class="h-6">
       </ng-container>
     </div>
   </div>
-  <div class="flex flex-col justify-center items-center gap-3">
-      <img [src]="pokemon.default_variety.sprites?.artwork_url" [alt]="pokemon.name" class="h-24">
-    <div>
+  <div class="flex flex-col justify-center items-center gap-3 relative">
+      <img [src]="pokemon.default_variety.sprites?.artwork_url" [alt]="pokemon.name" class="h-24 z-10">
+    <div class="absolute top-0 right-0">
       @if(pokemon.default_variety.types && pokemon.default_variety.types.length > 0){
-        <img [src]="getFirstType()?.background" [alt]="">
+        <img [src]="getFirstType()?.background" alt="Type principal du pokemon" class="h-24 z-0">
       }
     </div>
 

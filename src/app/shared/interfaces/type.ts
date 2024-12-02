@@ -1,7 +1,8 @@
 export interface Type {
   id: number;
-  sprite_url: string;
-  name: string;
+  icon: string;
+  color: string;
+  backgroud: string;
   pivot: {
     slot: number;
   }

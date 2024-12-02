@@ -2,10 +2,10 @@
   <div>
     <p class="font-bold italic">N°{{ pokemon.id }}</p>
     <p class="text-2xl font-semibold">{{ pokemon.name }}</p>
-    <div class="pt-2 flex flex-row gap-2 w-2/3">
-      @for (type of pokemon.default_variety.types; track type.id){
-        <img [src]="type.sprite_url" [alt]="type.name" class="h-6">
-      }
+    <div class="flex flex-row">
+      <ng-container *ngFor="let type of pokemon.default_variety.types">
+      <img [src]="type.icon" [alt]="type.id" class="h-6">
+      </ng-container>
     </div>
   </div>
   <div class="flex flex-col justify-center items-center gap-3">

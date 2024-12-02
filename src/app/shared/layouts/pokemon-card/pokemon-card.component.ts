@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Pokemon} from "../../interfaces/pokemon";
 
 @Component({
@@ -9,3 +9,5 @@ import {Pokemon} from "../../interfaces/pokemon";
 export class PokemonCardComponent {
   @Input() pokemon!: Pokemon;
 }
+
+

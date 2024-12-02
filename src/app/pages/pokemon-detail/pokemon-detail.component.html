@@ -4,7 +4,7 @@
     <img [src]="pokemon.default_variety.sprites?.artwork_url" [alt]="pokemon.name" class="w-full max-w-md">
     <div class="absolute top-0 left-0 p-4 flex flex-col gap-2">
       @for (type of pokemon.default_variety.types; track type.id){
-        <img [src]="type.sprite_url" [alt]="type.name" class="h-6">
+        <img [src]="type.icon" [alt]="type.id" class="h-6">
       }
     </div>
   </div>

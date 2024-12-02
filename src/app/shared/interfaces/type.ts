@@ -2,7 +2,7 @@ export interface Type {
   id: number;
   icon: string;
   color: string;
-  backgroud: string;
+  background: string;
   pivot: {
     slot: number;
   }

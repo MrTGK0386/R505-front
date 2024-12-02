@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {ApiService} from "../../shared/services/api.service";
 import {Paginate} from "../../shared/interfaces/paginate";
 import {Pokemon} from "../../shared/interfaces/pokemon";
@@ -8,6 +8,7 @@ import {Pokemon} from "../../shared/interfaces/pokemon";
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.scss'
 })
+
 export class PokemonListComponent {
 
   pokemonList?: Paginate<Pokemon>;
@@ -41,6 +42,18 @@ export class PokemonListComponent {
     }
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(event: Event): void {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const offsetHeight = document.documentElement.clientHeight;
+
+    if (scrollTop + offsetHeight >= scrollHeight - 1) {
+      console.log("Arrivé au bout de la page !");
+      this.loadNewPokemonPage();
+    }
+  }
+
   loadNewPokemonPage(){
     console.log("Chargement de la prochaine page");
     console.log(this.pageNumber);
@@ -48,3 +61,5 @@ export class PokemonListComponent {
   }
 
 }
+
+

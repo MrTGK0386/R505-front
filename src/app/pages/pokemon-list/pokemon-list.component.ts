@@ -11,17 +11,18 @@ import {Pokemon} from "../../shared/interfaces/pokemon";
 export class PokemonListComponent {
 
   pokemonList?: Paginate<Pokemon>;
+  pageNumber: number = 1;
+  allPokemonLoaded: boolean = false;
 
-  constructor(
-    public apiService: ApiService,
-  ) {
-    this.loadNextPokemonPage();
+  constructor(public apiService: ApiService, ) {  }
+
+  ngOnInit() {
+    this.loadPokemonPage(this.pageNumber);
   }
 
   // Fonction pour charger la page suivante des pokemons
-  loadNextPokemonPage(){
+  loadPokemonPage(page: number) {
     // On crée le numéro de la page à charger
-    let page = 1
     if (this.pokemonList){
       page = this.pokemonList.current_page + 1;
     }
@@ -39,4 +40,9 @@ export class PokemonListComponent {
       });
     }
   }
+  loadNewPokemonPage(){
+    this.pageNumber ++;
+    this.loadPokemonPage(this.pageNumber);
+  }
+
 }

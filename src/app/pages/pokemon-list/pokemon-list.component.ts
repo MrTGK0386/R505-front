@@ -28,7 +28,7 @@ export class PokemonListComponent {
     }
 
     // On charge la page si elle n'existe pas ou si on n'a pas atteint la dernière
-    if (!this.pokemonList || this.pokemonList.last_page <= page){
+    if (!this.pokemonList || page <= this.pokemonList.last_page) {
       this.apiService.requestApi('/pokemon', 'GET', {page: page}).then((pokemons: Paginate<Pokemon>) => {
         // On ajoute les pokemons à la liste
         if (!this.pokemonList){
@@ -40,8 +40,10 @@ export class PokemonListComponent {
       });
     }
   }
+
   loadNewPokemonPage(){
-    this.pageNumber ++;
+    console.log("Chargement de la prochaine page");
+    console.log(this.pageNumber);
     this.loadPokemonPage(this.pageNumber);
   }
 

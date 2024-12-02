@@ -13,7 +13,7 @@ export class AppComponent {
     public apiService: ApiService,
   ) {
     this.apiService.requestApi('/pokemon').then((pokemons) => {
-      console.log(pokemons);
+      //console.log(pokemons);
     });
   }
 }

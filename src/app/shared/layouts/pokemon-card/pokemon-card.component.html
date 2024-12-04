@@ -8,14 +8,13 @@
       </ng-container>
     </div>
   </div>
-  <div class="flex flex-col justify-center items-center gap-3 relative">
-      <img [src]="pokemon.default_variety.sprites?.artwork_url" [alt]="pokemon.name" class="h-24 z-10">
-    <div class="absolute top-0 right-0">
+  <div class="flex flex-col justify-center items-center gap-3 w-40 bg-cover bg-center rounded-lg" [ngStyle]="{ 'background-image': 'url(' + getFirstType()?.background + ')' }">
+      <img [src]="pokemon.default_variety.sprites?.artwork_url" [alt]="pokemon.name" class="z-10">
+    <!--<div class="absolute top-0 right-0 ">
       @if(pokemon.default_variety.types && pokemon.default_variety.types.length > 0){
-        <img [src]="getFirstType()?.background" alt="Type principal du pokemon" class="h-24 z-0">
+        <img [src]="getFirstType()?.background" alt="Type principal du pokemon" class="z-0 h-fit">
       }
-    </div>
-
+    </div>-->
   </div>
 
 </div>

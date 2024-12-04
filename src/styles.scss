@@ -4,9 +4,9 @@
 @tailwind utilities;
 
 .card{
-  @apply bg-white shadow-md rounded-xl pl-4 border border-zinc-400 transition-colors;
+  @apply bg-white bg-opacity-80 shadow-md rounded-xl pl-4 border border-zinc-400 transition-colors;
 
   &.clickable:hover{
-    @apply border-zinc-700 bg-zinc-300;
+    @apply border-zinc-700 bg-zinc-300 bg-opacity-80;
   }
 }

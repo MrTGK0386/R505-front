@@ -4,7 +4,10 @@
     <p class="text-2xl font-semibold">{{ pokemon.name }}</p>
     <div class="flex flex-row">
       <ng-container *ngFor="let type of reorderTypes(pokemon.default_variety?.types)">
-      <img [src]="type.icon" [alt]="type.id" class="h-6">
+        <div [ngStyle]="{ 'background-color': type.color}" class="rounded-3xl flex flex-row justify-center items-center px-1.5 py-0.5 mr-1 mt-1">
+          <img [src]="type.icon" [alt]="type.id" class="h-6 mr-1">
+          <p>{{ getTypeName(type.color) }}</p>
+        </div>
       </ng-container>
     </div>
   </div>

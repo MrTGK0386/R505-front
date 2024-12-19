@@ -7,7 +7,7 @@ import {ApiService} from "./shared/services/api.service";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'R505-front';
+  title = 'Pokedex - Etienne';
 
   constructor(
     public apiService: ApiService,

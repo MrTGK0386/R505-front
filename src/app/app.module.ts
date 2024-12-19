@@ -13,6 +13,7 @@ import {formatDate} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
+import { HeaderComponent } from './shared/layouts/header/header.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HomeComponent } from './pages/home/home.component';
     PokemonDetailComponent,
     LangSelectorComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

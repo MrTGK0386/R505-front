@@ -14,7 +14,6 @@ import {FormsModule} from "@angular/forms";
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './shared/layouts/header/header.component';
-import { BackgroundComponent } from './shared/layouts/background/background.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import { BackgroundComponent } from './shared/layouts/background/background.comp
     LoginComponent,
     HomeComponent,
     HeaderComponent,
-    BackgroundComponent
   ],
   imports: [
     BrowserModule,

@@ -24,7 +24,7 @@
     </div>
 
   </header>
-<header [class.hidden]="isWindowSmall" class="w-full bg-white rounded-full py-4 px-6 shadow-md max-w-6xl mx-auto">
+<header [class.hidden]="isWindowSmall" class="z-50 sticky top-5 w-full bg-white rounded-full py-4 px-6 shadow-md max-w-6xl mt-1.5 mx-auto">
   <nav class="flex items-center justify-between">
     <!-- Bouton retour -->
     <button class="p-2 hover:bg-gray-100 rounded-full transition-colors" (click)="onBack()">
@@ -41,7 +41,7 @@
           stroke-linejoin="round"/>
       </svg>
     </button>
-
+    <app-lang-selector></app-lang-selector>
     <!-- Logo central -->
     <div class="flex items-center space-x-2">
       <img class="h-12" src="/assets/logo.png">

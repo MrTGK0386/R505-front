@@ -1,1 +1,98 @@
-<p>header works!</p>
+<header [class.hidden]="!isWindowSmall" class="relative bg-gradient-to-r from-red-800 to-red-600 w-full h-48">
+    <!--  Navigation and Title Container-->
+    <div class="h-full flex flex-row px-6 pb-8">
+      <!--    Top Section with Back Button-->
+      <div class="flex items-center justify-center">
+        <!-- Chevron SVG inline -->
+        <button [routerLink]="['/']" class="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               class="h-6 w-6 text-red-600"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke="currentColor">
+            <path stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+      </div>
+      <!--    Centered Title-->
+      <div class="flex items-center flex-grow justify-center text-center">
+        <h1 class="text-white text-4xl font-bold italic">Pokedex</h1>
+      </div>
+    </div>
+
+  </header>
+<header [class.hidden]="isWindowSmall" class="w-full bg-white rounded-full py-4 px-6 shadow-md max-w-6xl mx-auto">
+  <nav class="flex items-center justify-between">
+    <!-- Bouton retour -->
+    <button class="p-2 hover:bg-gray-100 rounded-full transition-colors" (click)="onBack()">
+      <svg
+        class="w-6 h-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M15 19l-7-7 7-7"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <!-- Logo central -->
+    <div class="flex items-center space-x-2">
+      <div class="w-8 h-8 bg-red-500 rounded-full"></div>
+      <span class="text-xl font-bold">PockeTeX</span>
+    </div>
+
+    <!-- Groupe d'icônes de droite -->
+    <div class="flex items-center space-x-4">
+      <!-- Toggle mode jour/nuit -->
+      <div class="flex items-center space-x-2">
+        <svg
+          class="w-5 h-5 text-yellow-400"
+          viewBox="0 0 20 20"
+          fill="currentColor">
+          <path
+            fill-rule="evenodd"
+            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+            clip-rule="evenodd"/>
+        </svg>
+        <!-- Switch toggle -->
+        <div class="w-12 h-6 bg-gray-200 rounded-full relative cursor-pointer" (click)="toggleDarkMode()">
+          <div [class]="isDarkMode ? 'absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform' : 'absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform'"></div>
+        </div>
+      </div>
+
+      <!-- Bouton recherche -->
+      <button class="p-2 hover:bg-gray-100 rounded-full transition-colors" (click)="onSearch()">
+        <svg
+          class="w-5 h-5"
+          viewBox="0 0 20 20"
+          fill="currentColor">
+          <path
+            fill-rule="evenodd"
+            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+            clip-rule="evenodd"/>
+        </svg>
+      </button>
+
+      <!-- Bouton grille -->
+      <button class="p-2 hover:bg-gray-100 rounded-full transition-colors" (click)="onGridView()">
+        <svg
+          class="w-5 h-5"
+          viewBox="0 0 20 20"
+          fill="currentColor">
+          <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+
+
+

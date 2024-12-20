@@ -1,12 +1,38 @@
 <body class="font-Poppins">
   @if (pokemon){
-    <h1 class="flex items-center mb-6"><a [routerLink]="['/']" class="btn btn-circle btn-primary mr-2"><-</a> {{pokemon.name}}</h1>
-    <div class="flex items-center justify-center p-4 relative bg-radial-{{getFirstType()?.color}}">
-      <img [src]="pokemon.default_variety.sprites?.artwork_url" [alt]="pokemon.name" class="w-full max-w-md">
-      <div class="absolute top-0 left-0 p-4 flex flex-col gap-2">
-        @for (type of pokemon.default_variety.types; track type.id){
-          <img [src]="type.icon" [alt]="type.id" class="h-6">
-        }
+    <div class="flex flex-col items-center justify-center p-4 relative z-50 bg-center bg-radial-{{getFirstType()?.color}}">
+      <nav class="flex justify-between items-center z-20 pt-4 w-full">
+        <button class="p-2 rounded-full bg-white/80 backdrop-blur-sm" [routerLink]="['/']">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
+            <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <span class="text-xl font-bold text-white">N° {{pokemon.id}}</span>
+        <div class="flex gap-3">
+          <button class="p-2 rounded-full bg-white/80 backdrop-blur-sm">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="black">
+              <path d="M9.6144 16.7956C9.277 17.5682 8.20776 17.5682 7.8704 16.7956L6.99275 14.7854C6.21171 12.9966 4.80589 11.5726 3.0523 10.7942L0.63658 9.7219C-0.131464 9.381 -0.131463 8.26368 0.63658 7.92276L2.97685 6.88394C4.77553 6.08552 6.20657 4.60881 6.97427 2.75892L7.8633 0.616731C8.19319 -0.178232 9.2916 -0.178234 9.6215 0.616731L10.5105 2.75894C11.2782 4.60881 12.7092 6.08552 14.5079 6.88394L16.8482 7.92276C17.6162 8.26368 17.6162 9.381 16.8482 9.7219L14.4325 10.7942C12.6789 11.5726 11.2731 12.9966 10.492 14.7854L9.6144 16.7956ZM3.53956 8.82234C5.8254 9.837 7.68402 11.5048 8.74238 13.7996C9.8008 11.5048 11.6594 9.837 13.9452 8.82234C11.6321 7.79557 9.7676 6.04647 8.74239 3.71088C7.71719 6.04648 5.85267 7.79557 3.53956 8.82234ZM18.4014 21.6899L18.6482 21.1242C19.0882 20.1156 19.8807 19.3125 20.8695 18.8732L21.6299 18.5353C22.0412 18.3526 22.0412 17.7549 21.6299 17.5722L20.9121 17.2532C19.8978 16.8026 19.0911 15.9698 18.6586 14.9269L18.4052 14.3156C18.2285 13.8896 17.6395 13.8896 17.4628 14.3156L17.2094 14.9269C16.777 15.9698 15.9703 16.8026 14.956 17.2532L14.2381 17.5722C13.8269 17.7549 13.8269 18.3526 14.2381 18.5353L14.9985 18.8732C15.9874 19.3125 16.7798 20.1156 17.2198 21.1242L17.4667 21.6899C17.6473 22.104 18.2207 22.104 18.4014 21.6899ZM17.3745 18.0469L17.937 17.4883L18.4878 18.0469L17.937 18.5898L17.3745 18.0469Z"/>
+            </svg>
+          </button>
+          <button class="p-2 rounded-full bg-white/80 backdrop-blur-sm">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
+              <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+      </nav>
+      <img [src]="pokemon.default_variety.sprites?.artwork_url" [alt]="pokemon.name" class="w-1/3 max-w-md mb-4">
+      <div class="font-extrabold text-white">
+        <p class="absolute left-1/2 -translate-x-1/2 bottom-20 text-7xl text-center opacity-40 italic">{{pokemon.name}}</p>
+        <p class="text-4xl text-center">{{pokemon.name}}</p>
+      </div>
+      <div class="top-0 left-0 p-4 flex flex-row gap-2">
+        <ng-container *ngFor="let type of reorderTypes(pokemon.default_variety?.types)">
+          <div [ngStyle]="{ 'color': type.color, 'border-color': type.color}" class="border-solid border-2 rounded-3xl flex flex-row justify-center items-center px-1.5 py-0.5 mr-1 mt-1">
+            <img [src]="type.icon" [alt]="type.id" class="h-6 mr-1">
+            <p class="text-l font-bold" >{{ getTypeName(type.color) }}</p>
+          </div>
+        </ng-container>
       </div>
     </div>
     <div class="flex items-center justify-center gap-3">

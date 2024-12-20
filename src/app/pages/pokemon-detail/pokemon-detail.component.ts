@@ -3,6 +3,7 @@ import {Pokemon} from "../../shared/interfaces/pokemon";
 import {ApiService} from "../../shared/services/api.service";
 import {ActivatedRoute} from "@angular/router";
 import {Type} from "../../shared/interfaces/type";
+import {list} from "postcss";
 
 @Component({
   selector: 'app-pokemon-detail',

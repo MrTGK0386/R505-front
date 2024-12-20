@@ -1,8 +1,8 @@
-<header [class.hidden]="!isWindowSmall" class="relative bg-gradient-to-r from-red-800 to-red-600 w-full h-48">
+<header [class.hidden]="!isWindowSmall" class="relative bg-gradient-to-r from-red-800 to-red-600 w-full h-32 overflow-hidden">
     <!--  Navigation and Title Container-->
-    <div class="h-full flex flex-row px-6 pb-8">
+    <div class="h-full flex flex-row px-6 py-4">
       <!--    Top Section with Back Button-->
-      <div class="flex items-center justify-center">
+      <div class="flex items-center justify-center z-20">
         <!-- Chevron SVG inline -->
         <button [routerLink]="['/']" class="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg"
@@ -17,9 +17,15 @@
           </svg>
         </button>
       </div>
+      <div class="absolute top-0 left-0 z-10">
+        <img src="/assets/Pokedex.png">
+      </div>
       <!--    Centered Title-->
-      <div class="flex items-center flex-grow justify-center text-center">
+      <div class="flex items-center flex-grow justify-center text-center z-20">
         <h1 class="text-white text-4xl font-bold italic">Pokedex</h1>
+      </div>
+      <div class="flex items-center justify-center">
+        <app-lang-selector></app-lang-selector>
       </div>
     </div>
 

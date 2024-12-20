@@ -13,6 +13,9 @@ module.exports = {
         'pokeballs' : "4%",
         'pokeballsXS' : "15%",
       },
+      fontFamily: {
+        Poppins: ['Poppins', 'sans-serif'],  // Ajout de la police
+      },
 
     },
   },

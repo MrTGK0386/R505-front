@@ -1,6 +1,12 @@
 <body class="bg-pokeballsXS lg:bg-pokeballs bg-repeat-space font-Poppins">
 <app-header></app-header>
-<section class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+<section class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 rounded">
+  <div class="flex flex-row">
+    <div class="flex-grow rounded-3xl bg-white shadow mx-4 p-2">barre de recherche</div>
+    <button class="rounded-full bg-white mx-2">
+      filtr
+    </button>
+  </div>
   @for (pokemon of pokemonList?.data; track pokemon.id){
     <a [routerLink]="['/pokemon/'+pokemon.id]">
         <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>

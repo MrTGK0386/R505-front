@@ -14,6 +14,7 @@ import {FormsModule} from "@angular/forms";
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './shared/layouts/header/header.component';
+import { AudioPlayerComponent } from './shared/layouts/audio-player/audio-player.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HeaderComponent } from './shared/layouts/header/header.component';
     LoginComponent,
     HomeComponent,
     HeaderComponent,
+    AudioPlayerComponent,
   ],
   imports: [
     BrowserModule,

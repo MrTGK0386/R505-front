@@ -1,0 +1,23 @@
+.play-button {
+  @apply w-8 h-8 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 transition-colors;
+}
+
+.progress-container {
+  @apply flex-grow h-1 bg-gray-200 rounded-full relative;
+}
+
+.progress-bar {
+  @apply h-full bg-green-500 rounded-full transition-all duration-100;
+}
+
+.seek-bar {
+  @apply absolute inset-0 w-full opacity-0 cursor-pointer;
+}
+
+.duration {
+  @apply text-xs text-gray-500;
+}
+
+.label {
+  @apply text-xs text-gray-500;
+}

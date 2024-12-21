@@ -1,0 +1,39 @@
+<div class="max-w-xs mx-auto">
+  <!-- Audio element -->
+  <audio #audioPlayer preload="metadata">
+    <source [src]="audioUrl" type="audio/mpeg">
+  </audio>
+
+  <!-- Audio Controls -->
+  <div class="flex items-center gap-3 mb-2">
+    <!-- Play Button -->
+    <button
+      class="play-button"
+      (click)="togglePlay()"
+      [innerHTML]="playButtonIcon"
+    >
+    </button>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div
+        class="progress-bar"
+        [style.width]="progress + '%'"
+      ></div>
+      <input
+        type="range"
+        [value]="progress"
+        (input)="onSeek($event)"
+        class="seek-bar"
+        min="0"
+        max="100"
+      >
+    </div>
+  </div>
+
+  <!-- Time and Label -->
+  <div class="text-center">
+    <span class="duration">{{durationDisplay}}</span>
+    <p class="label">Cri du pokemon</p>
+  </div>
+</div>

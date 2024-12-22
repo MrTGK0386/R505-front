@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Pokemon} from "../../interfaces/pokemon";
+import {Ability} from "../../interfaces/ability";
 import {ApiService} from "../../services/api.service";
 import {ActivatedRoute} from "@angular/router";
 
@@ -10,6 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class TalentsCardComponent {
   pokemon!: Pokemon;
+  abilities!: Ability[];
 
   constructor(
     private apiService: ApiService,
@@ -25,5 +27,12 @@ export class TalentsCardComponent {
           });
       }
     });
+  }
+
+  getPokemonAbilities(pokemonId: number) {
+    return this.apiService.requestApi(`/pokemon/${pokemonId}/ability`)
+      .then((response: Ability) => {
+        this.abilities = response;
+      });
   }
 }

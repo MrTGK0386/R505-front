@@ -17,6 +17,7 @@ import { HeaderComponent } from './shared/layouts/header/header.component';
 import { AudioPlayerComponent } from './shared/layouts/audio-player/audio-player.component';
 import { DescriptionCardComponent } from './shared/layouts/description-card/description-card.component';
 import { TalentsCardComponent } from './shared/layouts/talents-card/talents-card.component';
+import { StatsCardComponent } from './shared/layouts/stats-card/stats-card.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TalentsCardComponent } from './shared/layouts/talents-card/talents-card
     AudioPlayerComponent,
     DescriptionCardComponent,
     TalentsCardComponent,
+    StatsCardComponent,
   ],
   imports: [
     BrowserModule,

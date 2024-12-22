@@ -15,6 +15,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './shared/layouts/header/header.component';
 import { AudioPlayerComponent } from './shared/layouts/audio-player/audio-player.component';
+import { DescriptionCardComponent } from './shared/layouts/description-card/description-card.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AudioPlayerComponent } from './shared/layouts/audio-player/audio-player
     HomeComponent,
     HeaderComponent,
     AudioPlayerComponent,
+    DescriptionCardComponent,
   ],
   imports: [
     BrowserModule,

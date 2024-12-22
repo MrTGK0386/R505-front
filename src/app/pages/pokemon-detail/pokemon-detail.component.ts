@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {
+  Component
+} from '@angular/core';
 import {Pokemon} from "../../shared/interfaces/pokemon";
 import {ApiService} from "../../shared/services/api.service";
 import {ActivatedRoute} from "@angular/router";
@@ -29,6 +31,15 @@ export class PokemonDetailComponent {
       }
     });
   }
+
+  activeTab: number = 0;
+  tabs = [
+    { name: 'A propos' },
+    { name: 'Stats' },
+    { name: 'Capacités' },
+    { name: 'Autres' }
+  ];
+
   getFirstType(){
     if (this.pokemon && this.pokemon.default_variety && this.pokemon.default_variety.types && this.pokemon.default_variety.types.length > 0){
       const index : number = this.pokemon.default_variety.types.length - 1;

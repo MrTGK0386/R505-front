@@ -1,0 +1,29 @@
+name: Deploy Frontend to Server
+
+on:
+  push:
+    branches:
+      - master  # change si ta branche principale a un autre nom (ex: master)
+
+jobs:
+  deploy:
+    name: Deploy via SSH
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up SSH agent
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Deploy frontend container via SSH
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
+            cd /home/debian/PokedexCICD   # <-- À ADAPTER !
+            git pull origin main
+            docker compose build frontend
+            docker compose up -d frontend
+          EOF

@@ -11,7 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class TalentsCardComponent {
   pokemon!: Pokemon;
-  abilities!: Ability[];
+  abilities!: Ability;
 
   constructor(
     private apiService: ApiService,
